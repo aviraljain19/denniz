@@ -57,10 +57,16 @@ def generate_response(user_input):
     if similarities[most_similar_index] > SIMILARITY_THRESHOLD:
         # Retrieve the response with the highest similarity score
         most_similar_query = list(responses.keys())[most_similar_index]
-        return responses[most_similar_query]
+
+        # Check if the response includes a placeholder for the bot's name
+        if '{name}' in most_similar_query:
+            # Replace the placeholder with the bot's name
+            return responses[most_similar_query].replace('{name}', 'Denniz')
+        else:
+            return responses[most_similar_query]
     else:
         # Return a default response if the input query does not match any of the available responses
-        return "I'm sorry, I don't understand. Can you please rephrase your query?"
+        return "I'm sorry, Denniz doesn't understand. Can you please rephrase your query?"
 
 # Test the chatbot
 while True:
