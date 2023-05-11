@@ -43,16 +43,24 @@ def get_most_similar_query(query):
         return None
 
 # Define a function to generate a response
-def generate_response(query):
-    query = query.lower()
-    if query in responses:
-        return responses[query]
+def generate_response(user_input):
+    # Preprocess the user input
+    processed_input = preprocess(user_input)
+
+    # Calculate the similarity between the user input and the available responses
+    similarities = [get_similarity(processed_input, preprocess(response)) for response in responses.keys()]
+
+    # Find the index of the most similar query
+    most_similar_index = np.argmax(similarities)
+
+    # Check if the most similar query has a similarity score greater than the threshold
+    if similarities[most_similar_index] > SIMILARITY_THRESHOLD:
+        # Retrieve the response with the highest similarity score
+        most_similar_query = list(responses.keys())[most_similar_index]
+        return responses[most_similar_query]
     else:
-        most_similar_query = get_most_similar_query(query)
-        if most_similar_query:
-            return responses[most_similar_query]
-        else:
-            return responses['default']
+        # Return a default response if the input query does not match any of the available responses
+        return "I'm sorry, I don't understand. Can you please rephrase your query?"
 
 # Test the chatbot
 while True:
