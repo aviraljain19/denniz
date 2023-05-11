@@ -1,0 +1,28 @@
+User: Hello, how can I help you today?
+Bot: I have a question about my account.
+User: Sure, what do you need help with?
+Bot: I want to update my email address.
+User: Okay, to update your email address, you'll need to log into your account and go to the settings page. From there, you can update your email address.
+Bot: Thank you. How do I log into my account?
+User: You can log into your account by going to our website and clicking on the login button. From there, you'll need to enter your email address and password.
+Bot: Got it. Thanks for your help.
+User: You're welcome. Do you have any other questions?
+Bot: No, that's all for now. Thanks again.
+User: No problem. Have a great day!
+Bot: You too.
+
+Hi
+Hello
+Hey there
+Hi, how are you?
+Howdy
+Good morning
+Good afternoon
+Good evening
+Bye
+Goodbye
+See you later
+Thanks
+Thank you
+Thanks a lot
+Thank you so much
