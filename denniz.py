@@ -130,4 +130,4 @@ def generate_response(user_input):
 while True:
     user_input = input('You: ')
     response = generate_response(user_input)
-    print('Bot:', response)
+    print('Denniz:', response)
