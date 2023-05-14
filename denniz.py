@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# SPDX-License-Identifier: GPL-3.0-or-later
+# (c) Aryan Sinha, Ashutosh Mishra, Aviral Jain
 import nltk
 nltk.download('wordnet')
 nltk.download('omw-1.4')
