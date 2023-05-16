@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # (c) Aryan Sinha, Ashutosh Mishra, Aviral Jain
 import nltk
+nltk.download('punkt')
 nltk.download('wordnet')
 nltk.download('omw-1.4')
 nltk.download('averaged_perceptron_tagger')
@@ -44,6 +45,9 @@ responses = {
     'what is your favorite color': 'As a chatbot, I dont have the ability to have a favorite color. How can I assist you?',
     'what is the meaning of life': 'The meaning of life is a complex philosophical question that has been debated for centuries. What specific question or topic can I assist you with?',
     'what is your favorite food': 'As a chatbot, I dont eat food, so I dont have a favorite. What can I help you with?',
+    'Can you suggest a good restaurant nearby':'Certainly! Can you please provide me with your location or a specific cuisine preference?',
+    'Tell me a joke':'Sure! Why dont scientists trust atoms? Because they make up everything!',
+    'Thank you for your help!':'Youre welcome Im here to assist you anytime.',
     'default': 'Sorry, I didn\'t understand what you said. Can you please rephrase your query?'
 }
 
