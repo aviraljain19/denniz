@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # (c) Aryan Sinha, Ashutosh Mishra, Aviral Jain
 import nltk
+import random
 nltk.download('punkt')
 nltk.download('wordnet')
 nltk.download('omw-1.4')
@@ -23,6 +24,26 @@ def get_current_date():
     current_date = date.today().strftime("%B %d, %Y")
     return f"The current date is {current_date}."
 
+def get_random_joke():
+    if not jokes:
+        return f"Sorry, I'm out of jokes for now. Check back later!"
+    random_joke = random.choice(jokes)
+    jokes.remove(random_joke)
+    return f"Sure!,{random_joke}"
+    
+    
+jokes=[
+    "Police arrested two kids yesterday, one was drinking battery acid, the other was eating fireworks. They charged one – and let the other one off.",
+    "I was having dinner with Garry Kasporov (world chess champion) and there was a check tablecloth. It took him two hours to pass me the salt.",
+    "My therapist says I have a preoccupation with vengeance. We’ll see about that.",
+    "What falls, but never needs a bandage? The rain.",
+    "I was going to tell you a joke about boxing but I forgot the punch line.",
+    "Why did the egg hide? It was a little chicken.",
+    "Why couldn't the sunflower ride its bike? It lost its petals.",
+    "What's an egg's favorite vacation spot? New Yolk City.",
+    "I wanted to buy some camo pants but couldn't find any.",
+    "What kind of candy do astronauts like? Mars bars."
+]
 
 
 # Define similarity threshold
@@ -58,12 +79,12 @@ responses = {
     'what is the meaning of life': 'The meaning of life is a complex philosophical question that has been debated for centuries. What specific question or topic can I assist you with?',
     'what is your favorite food': 'As a chatbot, I dont eat food, so I dont have a favorite. What can I help you with?',
     'Can you suggest a good restaurant nearby':'Certainly! Can you please provide me with your location or a specific cuisine preference?',
-    'Tell me a joke':'Sure! Why dont scientists trust atoms? Because they make up everything!',
     'Thank you for your help!':'Youre welcome Im here to assist you anytime.',
     'tell me a fact': 'Did you know that the honeybee is the only insect that produces food eaten by humans?',
     'what is your favorite color': 'As a chatbot, I don\'t have preferences, including favorite colors. Is there something else I can assist you with?',
     'current time': get_current_time(),
     'current date': get_current_date(),
+    'Tell me a joke': get_random_joke(),
     'default': 'Sorry, I didn\'t understand what you said. Can you please rephrase your query?'
 }
   
