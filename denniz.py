@@ -12,6 +12,18 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from nltk.corpus import wordnet as wn
 from nltk import word_tokenize, pos_tag
+from datetime import datetime,date
+
+def get_current_time():
+    current_time = datetime.now().strftime("%H:%M:%S")
+    return f"The current time is {current_time}."
+
+# Function to get the current date
+def get_current_date():
+    current_date = date.today().strftime("%B %d, %Y")
+    return f"The current date is {current_date}."
+
+
 
 # Define similarity threshold
 SIMILARITY_THRESHOLD = 0.6
@@ -48,8 +60,13 @@ responses = {
     'Can you suggest a good restaurant nearby':'Certainly! Can you please provide me with your location or a specific cuisine preference?',
     'Tell me a joke':'Sure! Why dont scientists trust atoms? Because they make up everything!',
     'Thank you for your help!':'Youre welcome Im here to assist you anytime.',
+    'tell me a fact': 'Did you know that the honeybee is the only insect that produces food eaten by humans?',
+    'what is your favorite color': 'As a chatbot, I don\'t have preferences, including favorite colors. Is there something else I can assist you with?',
+    'current time': get_current_time(),
+    'current date': get_current_date(),
     'default': 'Sorry, I didn\'t understand what you said. Can you please rephrase your query?'
 }
+  
 
 # Define a function to preprocess text data
 def preprocess(text):
