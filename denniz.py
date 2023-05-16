@@ -3,6 +3,7 @@
 # (c) Aryan Sinha, Ashutosh Mishra, Aviral Jain
 import nltk
 import random
+import requests
 nltk.download('punkt')
 nltk.download('wordnet')
 nltk.download('omw-1.4')
@@ -45,7 +46,32 @@ jokes=[
     "What kind of candy do astronauts like? Mars bars."
 ]
 
+url = "http://api.openweathermap.org/data/2.5/weather"
+api_key = "e42e57fc7d102ae8eba1438cca1014fc"
 
+
+def get_current_weather(location):
+    # Parameters for the API request
+    params = {
+        "q": location,
+        "appid": api_key,
+        "units": "metric"  # Specify the unit of measurement (metric for Celsius)
+    }
+    response = requests.get(url, params=params)
+    weather_data = response.json()
+    if response.status_code == 200:
+        temperature = weather_data["main"]["temp"]
+        humidity = weather_data["main"]["humidity"]
+        description = weather_data["weather"][0]["description"]
+        weather_message = f"The current weather in {location} is {description}. " \
+                          f"The temperature is {temperature}°C and the humidity is {humidity}%."
+    else:
+        weather_message = "Sorry, I couldn't retrieve the weather information at the moment. " \
+                          "Please try again later."
+
+    return f"{weather_message}"
+
+location = "London"
 # Define similarity threshold
 SIMILARITY_THRESHOLD = 0.6
 
@@ -85,6 +111,7 @@ responses = {
     'current time': get_current_time(),
     'current date': get_current_date(),
     'Tell me a joke': get_random_joke(),
+    'Current weather': get_current_weather(location),
     'default': 'Sorry, I didn\'t understand what you said. Can you please rephrase your query?'
 }
   
